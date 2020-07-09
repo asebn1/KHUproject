@@ -2,15 +2,15 @@
 Kyunghee University Computer Engineering Notice and Employment Information Analysis Program
 
 
-1. 주제 선정 이유
+# 1. 주제 선정 이유
 텀 프로젝트 주제는 경희대학교 컴퓨터공학과 공지사항 및 취업 정보 분석이다. 경희대학교 학부 학생들은 학교의 공지사항 및 취업 정보를 알고 싶다. 공지사항이 경희톡으로 오기도 하지만 보편화한 지 얼마 되지 않았다. 또한, 알고 싶은 정보가 오지 않을 때도 많기 때문에 직접 찾아보아야 한다. 내가 궁금한 기업의 취업 정보가 언제 전달될지와 공지사항에서는 내가 궁금한 공지사항이 언제 공지될지 예상할 수 있도록 한다. 이전 2015년부터 현재까지의 공지사항 및 취업 정보를 바탕으로 정보를 분석하여 언제 공지되는지 예상할 수 있다.
 
 
-2.가설 정의
+# 2.가설 정의
 2015년부터 2019년까지 매년 9월마다 가을 프로그래밍 경시대회가 공지된다고 가정하자. 그렇다면, 2020년 9월에도 가을 프로그래밍 경시대회가 공지된다는 것을 유추할 수 있다. 이처럼 주기적으로 공지되는 타이틀 정보를 저장하여 분석한다. 분석된 자료를 통해 앞으로 공지될 공지사항 및 취업 정보를 예측할 수 있다.
 
 
-3.인터넷을 통한 데이터 획득
+# 3.인터넷을 통한 데이터 획득
 경희대학교 SW융합대학 - 컴퓨터공학과 - 공지사항
 공지사항은 등록일을 기준으로 하며 번호와 공지 제목이 있다. 등록일과 공지 제목을 통해 달마다 어떤 내용이 공지되는지 분석하여 확인할 수 있다.
 
@@ -20,7 +20,7 @@ Kyunghee University Computer Engineering Notice and Employment Information Analy
 
 파이썬 크롤링을 통해 정보를 csv 파일 형식으로 저장한다. 이후 csv파일을 토대로 내용을 분석한다.
 
-4.분석을 위한 데이터의 가공
+# 4.분석을 위한 데이터의 가공
 <데이터를 수집하고 분석하기 위한 사전 작업>
 
 beautifulSoup4를 설치 (pip install beautifulSoup4)
@@ -33,7 +33,7 @@ url을 통해 file을 open하기 위한 urllib 설치 (pip install urllib)
 
 def getNotice():
 
-#총 페이지
+총 페이지
 count = 42
 
 #홍페이지 주소. 페이지 마다 count 해주어 게시판 글 모두 긁어옴
@@ -41,7 +41,7 @@ baseurl = 'http://ce.khu.ac.kr/index.php?pg=' + str(count) + '&page=list&hCode=B
 res = req.urlopen(baseurl)
 soup = BeautifulSoup(res, 'html.parser')
 
-# 호환되도록 버퍼 -1과 utf8 적용
+호환되도록 버퍼 -1과 utf8 적용
 f = open('Notice.csv', 'a', -1, "utf-8")
 
 #페이지가 끝날때까지 반복
@@ -104,7 +104,7 @@ baseurl = 'http://ce.khu.ac.kr/index.php?pg=' + str(count) + '&page=list&hCode=B
 res = req.urlopen(baseurl)
 soup = BeautifulSoup(res, 'html.parser')
 
-# 호환되도록 버퍼 -1과 utf8 적용
+호환되도록 버퍼 -1과 utf8 적용
 f = open('Employment.csv', 'a', -1, "utf-8")
 
 #페이지가 끝날때까지 반복
@@ -165,7 +165,7 @@ while(1):
 또한, 검색된 결과에서 등록일을 확인한다. 등록일 사이에 얼만큼의 주기를 가지고 규칙이 있는지 확인한다.
 만약 규칙이 있다면, 다음 2020년 이후에도 같은 주기로 비슷한 내용의 공지가 올라올 수 있음을 예상한다.
 
-5. 분석 결과 도출
+# 5. 분석 결과 도출
 컴퓨터공학과의 공지사항이 시작된 2015-06-30 부터 2020-05-30까지를 기준으로 공지사항 내용이 수집되었다.
 컴퓨터공학과 취업정보란 시작된 2015-06-30 부터 2020-05-30까지를 기준으로 취업정보가 수집되었다.
 
@@ -299,7 +299,8 @@ else:
 
         print("앞으로 나올것으로 예측될 '"+ sch + "' 관련 공지사항은 다음과 같은 날짜로 예상됩니다.")
     print(list2)
-6. 데이터 분석 결과 및 결론
+    
+# 6. 데이터 분석 결과 및 결론
 ▲ 경희대학교 컴퓨터공학과의 공지사항 및 취업 정보 데이터를 추출하고 가공한다. 정보를 분석하여 앞으로 공지될 공지사항 및 취업 정보를 예측하고 달마다 공지되는 양을 파악한다.
 
 1) 공지사항
@@ -315,7 +316,8 @@ else:
 
 
 기존 2015-2019년 사이에 쌓인 데이터를 기준으로 앞으로 공지될 공지날짜를 예측하여 결과값으로 나타낸다.
-7. 참고문헌 및 자료
+
+# 7. 참고문헌 및 자료
 경희대학교 컴퓨터공학과 공지사항:http://ce.khu.ac.kr/index.php?hCode=BOARD&bo_idx=2
 경희대학교 컴퓨터공학과 취업정보:http://ce.khu.ac.kr/index.php?hCode=BOARD&bo_idx=3
 BeautifulSoup를 활용: https://freeharmony.tistory.com/64
